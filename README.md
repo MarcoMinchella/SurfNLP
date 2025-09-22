@@ -48,8 +48,8 @@ Code walkthrough in Jupyter Notebook format.
 
 Example queries like:
 
-“Which beach is best for beginners?”
+“What's a good surf spot in winter ?”
 
-“Where can I find the biggest waves?”
+“What is a good spot for beginners ?”
 
-“Which beaches are less crowded but still have great surf?”
+“What's a good spot for confirmed level surfers ?”
