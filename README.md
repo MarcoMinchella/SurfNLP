@@ -1,55 +1,63 @@
-📌 Project Overview
+# RAG for Surfing Spot Reviews
 
-This project explores how Retrieval-Augmented Generation (RAG) can be applied to a niche domain: surfing spot reviews. Using a dataset of ~2000 user reviews from TripAdvisor, Google Maps, and Yelp, covering 21 popular surfing beaches worldwide, we demonstrate how RAG can help answer nuanced questions about surf conditions, atmosphere, facilities, and overall experiences.
+## Project Overview
 
-The project is implemented entirely in a Python Jupyter Notebook, making it easy to follow along, experiment, and extend.
+This project explores how **Retrieval-Augmented Generation (RAG)** can be applied to a niche domain: surfing spot reviews. Using a dataset of ~2,000 user reviews from TripAdvisor, Google Maps, and Yelp, covering 21 popular surfing beaches worldwide, we demonstrate how RAG can help answer nuanced questions about surf conditions, atmosphere, facilities, and overall experiences.
 
-🏄 Dataset
+The project is implemented entirely in a Python Jupyter Notebook, making it easy to follow along, experiment with, and extend.
 
-Sources: TripAdvisor, Google Maps, Yelp
+-----
 
-Size: ~2000 reviews
+## Dataset
 
-Coverage: 21 surfing beaches (varied by location, wave quality, and popularity)
+- **Sources:** TripAdvisor, Google Maps, Yelp
+- **Size:** ~2,000 reviews
+- **Coverage:** 21 surfing beaches, varied by location, wave quality, and popularity
+- **Content:** User-generated text reviews, capturing experiences such as:
+  - Wave difficulty and surf quality
+  - Safety and crowd levels
+  - Local amenities (restaurants, rentals, schools)
+  - Atmosphere and community
 
-Content: User-generated text reviews, capturing experiences such as:
+-----
 
-Wave difficulty & surf quality
+## Repository Structure
 
-Safety & crowd levels
+```
+.
+├── data/                                  # All review data
+│   ├── NewCSVTagged_NLP/                  # Tagged/processed reviews
+│   ├── NewCSV_NLP/                        # Cleaned reviews
+│   ├── AllReviews.csv                     # Combined dataset
+│   └── *.csv                              # One file per surfing spot
+├── Milliaud_Minchella_NLP_Part2.ipynb     # Main notebook (RAG pipeline + experiments)
+├── milliaud_minchella_nlp_part2.py        # Standalone Python version
+└── README.md
+```
 
-Local amenities (restaurants, rentals, schools)
+-----
 
-Atmosphere & community
+## Methodology
 
-⚙️ Methodology
+**1. Preprocessing**
 
-Preprocessing
+- Cleaning text, removing duplicates, and translating all reviews into English.
+- Splitting reviews into manageable chunks for retrieval.
 
-Cleaning text, removing duplicates and translating all reviews in english language.
+**2. Embedding & Indexing**
 
-Splitting reviews into manageable chunks for retrieval.
+- Reviews are embedded into vector space using modern sentence embeddings.
+- Indexed with **FAISS** for efficient similarity search.
 
-Embedding & Indexing
+**3. RAG Pipeline**
 
-Reviews are embedded into vector space using modern sentence embeddings.
+- **Retriever:** fetches the most relevant reviews for a query.
+- **Generator:** uses an LLM to synthesize natural-language answers grounded in the retrieved reviews.
 
-Indexed with FAISS for efficient similarity search.
+**4. Exploration via Notebook**
 
-RAG Pipeline
-
-Retriever: Fetches the most relevant reviews for a query.
-
-Generator: Uses an LLM to synthesize natural-language answers grounded in retrieved reviews.
-
-Exploration via Notebook
-
-Code walkthrough in Jupyter Notebook format.
-
-Example queries like:
-
-“What's a good surf spot in winter ?”
-
-“What is a good spot for beginners ?”
-
-“What's a good spot for confirmed level surfers ?”
+- Full code walkthrough in Jupyter Notebook format.
+- Example queries:
+  - *“What’s a good surf spot in winter?”*
+  - *“What is a good spot for beginners?”*
+  - *“What’s a good spot for confirmed-level surfers?”*
